@@ -9,11 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.google.api.client.util.IOUtils;
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.ReadChannel;
-import com.google.cloud.storage.Blob;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
+
 
 @SpringBootApplication
 public class PocApplication {
@@ -24,7 +20,7 @@ public class PocApplication {
 		
 	}
 
-	private static void bucket() {
+	/*private static void bucket() {
 
 		String PROJECT_ID = "indigo-anchor-392208";
 		String PATH_TO_JSON_KEY = "D:\\cert.json";
@@ -55,6 +51,6 @@ public class PocApplication {
 
 		// ReadChannel r = blob.reader();
 
-	}
+	}*/
 
 }
