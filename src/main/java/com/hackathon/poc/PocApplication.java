@@ -31,7 +31,7 @@ public class PocApplication {
                   .build();
 		Storage storage = StorageOptions.newBuilder().setProjectId("indigo-anchor-392208")
 				.setCredentials(tokenCredential).build().getService();
-		System.out.println(GoogleCredentials.getApplicationDefault());
+		System.out.println(tokenCredential.getAccessToken());
 		Blob blob = (Blob) storage.get("hackathon-poc", "cert.json");
 		ReadChannel reader;
         String result = null;
