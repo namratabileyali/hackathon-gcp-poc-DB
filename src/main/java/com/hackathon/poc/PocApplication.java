@@ -27,11 +27,13 @@ public class PocApplication {
 		GoogleCredentials caCreds = GoogleCredentials.getApplicationDefault();
         IdTokenCredentials tokenCredential = IdTokenCredentials.newBuilder().setIdTokenProvider((IdTokenProvider)caCreds)
                   .setTargetAudience("https://hackathon-api-l2bbs3dpoq-ue.a.run.app")
-                  .setOptions(Arrays.asList(IdTokenProvider.Option.FORMAT_FULL, IdTokenProvider.Option.LICENSES_TRUE))
+                 //.setOptions(Arrays.asList(IdTokenProvider.Option.FORMAT_FULL, IdTokenProvider.Option.LICENSES_TRUE))
                   .build();
 		Storage storage = StorageOptions.newBuilder().setProjectId("indigo-anchor-392208")
 				.setCredentials(tokenCredential).build().getService();
 		System.out.println(tokenCredential.getAccessToken());
+		System.out.println(tokenCredential);
+		System.out.println(caCreds);
 		Blob blob = (Blob) storage.get("hackathon-poc", "cert.json");
 		ReadChannel reader;
         String result = null;
