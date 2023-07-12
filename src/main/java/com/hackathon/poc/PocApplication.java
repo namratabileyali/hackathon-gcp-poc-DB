@@ -7,6 +7,7 @@ import java.nio.channels.Channels;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.ReadChannel;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Storage;
@@ -25,7 +26,9 @@ public class PocApplication {
                   .setTargetAudience(targetAudience)
                   .setOptions(Arrays.asList(IdTokenProvider.Option.FORMAT_FULL, IdTokenProvider.Option.LICENSES_TRUE))
                   .build();*/
-		Storage storage = StorageOptions.getDefaultInstance().getService();
+		Storage storage = StorageOptions.newBuilder().setProjectId("indigo-anchor-392208")
+				.setCredentials(GoogleCredentials.getApplicationDefault()).build().getService();
+		System.out.println(GoogleCredentials.getApplicationDefault().getAccessToken());
 		Blob blob = (Blob) storage.get("hackathon-poc", "cert.json");
 		ReadChannel reader;
         String result = null;
