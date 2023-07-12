@@ -3,11 +3,14 @@ package com.hackathon.poc;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.channels.Channels;
+import java.util.Arrays;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.google.auth.oauth2.GoogleCredentials;
+import com.google.auth.oauth2.IdTokenCredentials;
+import com.google.auth.oauth2.IdTokenProvider;
 import com.google.cloud.ReadChannel;
 import com.google.cloud.storage.Blob;
 import com.google.cloud.storage.Storage;
@@ -21,14 +24,14 @@ public class PocApplication {
 		
 		SpringApplication.run(PocApplication.class, args);
 		 //bucket();
-		/*GoogleCredentials caCreds = GoogleCredentials.getApplicationDefault();
+		GoogleCredentials caCreds = GoogleCredentials.getApplicationDefault();
         IdTokenCredentials tokenCredential = IdTokenCredentials.newBuilder().setIdTokenProvider((IdTokenProvider)caCreds)
-                  .setTargetAudience(targetAudience)
+                  .setTargetAudience("https://hackathon-api-l2bbs3dpoq-ue.a.run.app")
                   .setOptions(Arrays.asList(IdTokenProvider.Option.FORMAT_FULL, IdTokenProvider.Option.LICENSES_TRUE))
-                  .build();*/
+                  .build();
 		Storage storage = StorageOptions.newBuilder().setProjectId("indigo-anchor-392208")
-				.setCredentials(GoogleCredentials.getApplicationDefault()).build().getService();
-		System.out.println(GoogleCredentials.getApplicationDefault().getAccessToken());
+				.setCredentials(tokenCredential).build().getService();
+		System.out.println(GoogleCredentials.getApplicationDefault());
 		Blob blob = (Blob) storage.get("hackathon-poc", "cert.json");
 		ReadChannel reader;
         String result = null;
