@@ -1,23 +1,42 @@
 package com.hackathon.poc;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.channels.Channels;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.google.api.client.util.IOUtils;
+import com.google.cloud.storage.Bucket;
+import com.google.cloud.storage.BucketInfo;
+import com.google.cloud.storage.Storage;
+import com.google.cloud.storage.StorageOptions;
 
 
 @SpringBootApplication
 public class PocApplication {
-
+	  private static final String CLOUD_PLATFORM_SCOPE = "https://www.googleapis.com/auth/cloud-platform";
 	public static void main(String[] args) {
+		
 		SpringApplication.run(PocApplication.class, args);
 		 //bucket();
-		
+		/*GoogleCredentials caCreds = GoogleCredentials.getApplicationDefault();
+        IdTokenCredentials tokenCredential = IdTokenCredentials.newBuilder().setIdTokenProvider((IdTokenProvider)caCreds)
+                  .setTargetAudience(targetAudience)
+                  .setOptions(Arrays.asList(IdTokenProvider.Option.FORMAT_FULL, IdTokenProvider.Option.LICENSES_TRUE))
+                  .build();*/
+		Storage storage = StorageOptions.getDefaultInstance().getService();
+		Bucket bucket = storage.create(BucketInfo.of("baeldung-bucket"));
+		System.out.println(bucket.getLocation());
+	
+		/*HttpClient client = HttpClient.newHttpClient();
+
+		HttpRequest request = HttpRequest.newBuilder()
+		    .uri(URI.create(GOOGLE_STORAGE_URL))
+		    .GET()
+		    .header("Authorization", "Bearer " + token)
+		    .build();
+
+		HttpResponse<String> response = client.send(request,
+		    HttpResponse.BodyHandlers.ofString());
+	*/
+      //  return tokenCredential;
 	}
 
 	/*private static void bucket() {

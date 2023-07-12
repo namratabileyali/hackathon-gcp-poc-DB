@@ -35,6 +35,22 @@
 			<artifactId>google-oauth-client-jetty</artifactId>
 			<version>1.34.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.auth</groupId>
+			<artifactId>google-auth-library-oauth2-http</artifactId>
+			<version>0.26.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.16.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>jwks-rsa</artifactId>
+			<version>0.18.0</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
 		<!-- https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
 		<dependency>
@@ -70,13 +86,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-		<!--<dependency>
+		<dependency>
 			<groupId>com.google.cloud</groupId>
 			<artifactId>google-cloud-storage</artifactId>
 			<version>2.23.0</version>
 			<scope>provided</scope>
 		</dependency>
-		-->
+	
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -85,9 +101,9 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			
+
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
@@ -96,7 +112,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 </project>
